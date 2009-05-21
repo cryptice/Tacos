@@ -5,7 +5,7 @@ describe "Using tacos" do
   describe "with REXML" do
 
     before do
-      Tacos.library = "rexml"
+      Tacos.library = :rexml
     end
     
     describe "parsing XML from file" do
@@ -28,7 +28,7 @@ describe "Using tacos" do
   describe "with libxml2" do
 
     before do
-      Tacos.library = "libxml2"
+      Tacos.library = :libxml2
     end
 
     describe "parsing XML from file" do
