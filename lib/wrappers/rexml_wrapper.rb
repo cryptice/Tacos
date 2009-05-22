@@ -16,11 +16,15 @@ module Tacos
     end
 
     def first(query)
-      if source_node = REXML::XPath.first(@doc, query)
+      if source_node = first_node(query)
         node = TNode.new
         node.name = source_node.name
         node
       end
+    end
+
+    def first_node(query)
+      REXML::XPath.first(@doc, query)
     end
   end
 
