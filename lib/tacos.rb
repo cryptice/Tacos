@@ -1,5 +1,16 @@
 module Tacos
   class TacoAbstractWrapper
+    def xml_from_file(file)
+      File.read(file)
+    end
+
+    def to_s
+      @doc.to_s
+    end
+  end
+
+  class TNode
+    attr_accessor :content, :name
   end
 
   (Dir.entries("lib/wrappers") - [".", ".."]).each {|lib| require "lib/wrappers/#{lib}"}

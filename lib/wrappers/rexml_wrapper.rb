@@ -15,12 +15,12 @@ module Tacos
       @doc = REXML::Document.new(xml_from_file(file))
     end
 
-    def xml_from_file(file)
-      File.read(file)
-    end
-
-    def to_s
-      @doc.to_s
+    def first(query)
+      if source_node = REXML::XPath.first(@doc, query)
+        node = TNode.new
+        node.name = source_node.name
+        node
+      end
     end
   end
 

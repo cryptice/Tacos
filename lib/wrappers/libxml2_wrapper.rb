@@ -15,12 +15,12 @@ module Tacos
       @doc = XML::Parser.string(xml_from_file(file)).parse
     end
 
-    def xml_from_file(file)
-      File.read(file)
-    end
-
-    def to_s
-      @doc.to_s
+    def first(query)
+      if source_node = @doc.find_first(query)
+        node = TNode.new
+        node.name = source_node.name
+        node
+      end
     end
   end
 
