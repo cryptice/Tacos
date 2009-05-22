@@ -1,20 +1,27 @@
+require 'xml'
+
 module Tacos
 
   class LibXML2Wrapper < TacoAbstractWrapper
-#    def self.new(params={})
-#      if params[:file]
-#        new_doc_from_file params[:file]
-#      end
-#    end
-#
-#    private
-#    def self.new_doc_from_file(file)
-#      XML::Parser.string(xml_from_file(file)).parse
-#    end
-#
-#    def self.xml_from_file(file)
-#      File.read(file)
-#    end
+    attr_accessor :doc
+
+    def self.new(xml_source=nil, options={})
+      instance = super()
+      instance.create_doc_from_file(xml_source) if xml_source
+      return instance
+    end
+
+    def create_doc_from_file(file)
+      @doc = XML::Parser.string(xml_from_file(file)).parse
+    end
+
+    def xml_from_file(file)
+      File.read(file)
+    end
+
+    def to_s
+      @doc.to_s
+    end
   end
 
 end

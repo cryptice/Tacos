@@ -8,11 +8,17 @@ describe "Using tacos" do
       Tacos.library = :rexml
     end
     
+    it "should define a REXML taco wrapper" do
+      Tacos.new.should be_a(Tacos::TacoAbstractWrapper)
+      Tacos.new.should be_a(Tacos::REXMLWrapper)
+    end
+
     describe "parsing XML from file" do
 
-      it "should define a taco wrapper" do
-        Tacos.new.should be_a(Tacos::TacoAbstractWrapper)
-        Tacos.new.should be_a(Tacos::REXMLWrapper)
+      it "should return an XML document in to_s" do
+        filename = "./spec/mock_xml/books.xml"
+        doc = Tacos.new(filename)
+        doc.to_s.should eql(File.read(filename).gsub("\"", "'").gsub("\r\n", "\n"))
       end
 
     end
@@ -31,13 +37,19 @@ describe "Using tacos" do
       Tacos.library = :libxml2
     end
 
+    it "should define a LibXML2 taco wrapper" do
+      Tacos.new.should be_a(Tacos::TacoAbstractWrapper)
+      Tacos.new.should be_a(Tacos::LibXML2Wrapper)
+    end
+
     describe "parsing XML from file" do
 
-      it "should define a taco wrapper" do
-        Tacos.new.should be_a(Tacos::TacoAbstractWrapper)
-        Tacos.new.should be_a(Tacos::LibXML2Wrapper)
+      it "should return an XML document in to_s" do
+        filename = "./spec/mock_xml/books.xml"
+        doc = Tacos.new(filename)
+        doc.to_s.should eql(File.read(filename).gsub("\r\n", "\n") + "\n")
       end
-
+      
     end
 
     describe "creating an XML document from scratch" do

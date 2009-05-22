@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+  <book>
+    <title>Ruby for beginners</title>
+    <author>Joe Smith</author>
+  </book>
+  <book>
+    <title>Continuing Ruby</title>
+    <author>Zoe Anderson</author>
+  </book>
+</books>

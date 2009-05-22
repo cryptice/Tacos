@@ -4,8 +4,8 @@ module Tacos
 
   (Dir.entries("lib/wrappers") - [".", ".."]).each {|lib| require "lib/wrappers/#{lib}"}
 
-  def self.new(params={})
-    library_class_name.new
+  def self.new(xml_source=nil, options={})
+    library_class_name.new(xml_source, options)
   end
 
   def self.library_class_name
