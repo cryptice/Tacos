@@ -6,11 +6,32 @@ module Tacos
       return instance
     end
 
+    def all(query)
+      node_collection(query)
+    end
+
     def first(query)
       if source_node = first_node(query)
         node = TNode.new
         node.name = source_node.name
         node
+      end
+    end
+
+    def find(selector, options={})
+      if selector.is_a?(String)
+        first(selector)
+      elsif selector.is_a?(Symbol)
+        case selector
+        when :first
+          if options.is_a?(String)
+            first(options)
+          elsif options.is_a?(Hash)
+            raise "Find conditions not implemented yet"
+          else
+            raise "Invalid find parameters."
+          end
+        end
       end
     end
 

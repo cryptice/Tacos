@@ -33,9 +33,33 @@ describe "Using tacos" do
         @doc.first("//book").name.should eql("book")
       end
 
+      it "should find first book node using find" do
+        @doc.find("//book").name.should eql("book")
+      end
+
+      it "should find first book node using find with explicit :first" do
+        @doc.find(:first, "//book").name.should eql("book")
+      end
+
       it "should return nil for a non-existing XPath query" do
         @doc.first("non_existing").should be_nil
       end
+
+      it "should return a REXMLNodeCollection for lazy evaluation" do
+        node_collection = @doc.all("//book")
+        node_collection.should be_a(Tacos::AbstractNodeCollection)
+        node_collection.should be_a(Tacos::REXMLNodeCollection)
+        node_collection.xpath_query.should eql("//book")
+      end
+
+      it "should return TNode instances when iterating over a node collection" do
+        nodes = @doc.all("//book")
+        nodes.each do |node|
+          node.should be_a(Tacos::TNode)
+          node.name.should eql("book")
+        end
+      end
+
     end
 
     describe "creating an XML document from scratch" do
@@ -77,9 +101,40 @@ describe "Using tacos" do
         @doc.first("//book").name.should eql("book")
       end
 
+      it "should find first book node using find" do
+        @doc.find("//book").name.should eql("book")
+      end
+
+      it "should find first book node using find with explicit :first" do
+        @doc.find(:first, "//book").name.should eql("book")
+      end
+
       it "should return nil for a non-existing XPath query" do
         @doc.first("non_existing").should be_nil
       end
+
+      it "should return library nodes when calling #nodes" do
+        @doc.all("//book").nodes.should be_a(LibXML::XML::XPath::Object)
+      end
+
+      it "should return a LibXML2NodeCollection for lazy evaluation" do
+        node_collection = @doc.all("//book")
+        node_collection.should be_a(Tacos::AbstractNodeCollection)
+        node_collection.should be_a(Tacos::LibXML2NodeCollection)
+        node_collection.xpath_query.should eql("//book")
+      end
+
+      it "should return TNode instances when iterating over a node collection" do
+        nodes = @doc.all("//book")
+        nodes.each do |node|
+          node.should be_a(Tacos::TNode)
+          node.name.should eql("book")
+        end
+      end
+
+      it "should return the number of nodes when calling LibXML2NodeCollection#size" #do
+        #@doc.all("//book").size.should eql(2)
+      #end
 
     end
 
