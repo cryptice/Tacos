@@ -1,6 +1,6 @@
 = Tacos
 
-Ruby gem providing a uniform API for various
+Ruby gem providing a uniform API for various XML libraries.
 
 == Install
 
@@ -8,7 +8,7 @@ Ruby gem providing a uniform API for various
 
 == Usage
 
-== Supported libraries ==
+== Supported libraries
 
 Currently tacos wraps the following libraries:
 
