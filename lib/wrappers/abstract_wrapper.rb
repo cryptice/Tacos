@@ -14,6 +14,8 @@ module Tacos
       if source_node = first_node(query)
         node = TNode.new
         node.name = source_node.name
+        node.source_node = source_node
+        node.taco = self
         node
       end
     end

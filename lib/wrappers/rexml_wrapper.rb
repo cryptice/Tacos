@@ -6,9 +6,7 @@ module Tacos
     attr_accessor :doc
 
     def all_nodes(query)
-      res = []
-      @doc.elements.each("//book") {|node| res << node}
-      res
+      REXML::XPath.match(@doc, query)
     end
 
     def create_doc_from_file(file)

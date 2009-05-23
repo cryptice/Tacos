@@ -57,9 +57,21 @@ describe "Using tacos" do
         nodes.each do |node|
           node.should be_a(Tacos::TNode)
           node.name.should eql("book")
+          node.source_node.should be_a(REXML::Element)
         end
       end
 
+      it "should return the number of nodes when calling LibXML2NodeCollection#size" do
+        #@doc.all("//book").size.should eql(2)
+      end
+
+      it "should return a REXMLNodeCollection containing a nodes children" do
+        node = @doc.first("//book")
+        node.children.should be_a(Tacos::REXMLNodeCollection)
+        node.children.each do |tnode|
+          tnode.should be_a(Tacos::TNode)
+        end
+      end
     end
 
     describe "creating an XML document from scratch" do
@@ -129,12 +141,21 @@ describe "Using tacos" do
         nodes.each do |node|
           node.should be_a(Tacos::TNode)
           node.name.should eql("book")
+          node.source_node.should be_a(LibXML::XML::Node)
         end
       end
 
-      it "should return the number of nodes when calling LibXML2NodeCollection#size" #do
+      it "should return the number of nodes when calling LibXML2NodeCollection#size" do
         #@doc.all("//book").size.should eql(2)
-      #end
+      end
+
+      it "should return a LibXML2NodeCollection containing a nodes children" do
+        node = @doc.first("//book")
+        node.children.should be_a(Tacos::LibXML2NodeCollection)
+        node.children.each do |tnode|
+          tnode.should be_a(Tacos::TNode)
+        end
+      end
 
     end
 
