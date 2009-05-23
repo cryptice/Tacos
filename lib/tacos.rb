@@ -13,11 +13,15 @@ module Tacos
   end
 
   def self.library_class_name
-    case @library
-    when "rexml", :rexml
-      REXMLWrapper
+    case library
+    when "hpricot", :hpricot
+      HpricotWrapper
     when "libxml2", :libxml2
       LibXML2Wrapper
+    when "rexml", :rexml
+      REXMLWrapper
+    else
+      raise "Invalid library identifier #{library}."
     end
   end
 

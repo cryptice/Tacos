@@ -16,6 +16,8 @@ REXML
 
 LibXML2
 
+Hpricot
+
 == Copyright and license
 
 Copyright (c) 2009 Erik Lindblad

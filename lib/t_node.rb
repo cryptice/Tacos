@@ -10,7 +10,9 @@ module Tacos
 
     def children
       # Maybe solve this with wrapper specifik TNodes
-      if @taco.is_a?(LibXML2Wrapper)
+      if @taco.is_a?(HpricotWrapper)
+        HpricotNodeCollection.new(source_node.xpath, @taco)
+      elsif @taco.is_a?(LibXML2Wrapper)
         LibXML2NodeCollection.new(source_node.path, @taco)
       elsif @taco.is_a?(REXMLWrapper)
         REXMLNodeCollection.new(source_node.xpath, @taco)
