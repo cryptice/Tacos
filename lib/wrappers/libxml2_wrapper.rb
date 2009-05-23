@@ -9,8 +9,8 @@ module Tacos
       @doc.find(query)
     end
 
-    def create_doc_from_file(file)
-      @doc = XML::Parser.string(xml_from_file(file)).parse
+    def create_doc_from_string(string)
+      @doc = XML::Parser.string(string).parse
     end
 
     def first_node(query)

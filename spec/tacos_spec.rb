@@ -13,12 +13,16 @@ describe "Using tacos" do
       Tacos.new.should be_a(Tacos::REXMLWrapper)
     end
 
-    describe "parsing XML from file" do
+    describe "creating XML doc from different sources" do
 
-      it "should return an XML document in to_s" do
+      it "should return an XML document in to_s given a valid XML file (REXML)" do
         filename = "./spec/mock_xml/books.xml"
-        doc = Tacos.new(filename)
-        doc.to_s.should eql(File.read(filename).gsub("\"", "'").gsub("\r\n", "\n"))
+        Tacos.new(filename).to_s.should eql(File.read(filename).gsub("\"", "'").gsub("\r\n", "\n"))
+      end
+
+      it "should return an XML document in to_s given a valid XML string (REXML)" do
+        xml_string = File.read "./spec/mock_xml/books.xml"
+        Tacos.new(xml_string).to_s.should eql(xml_string.gsub("\"", "'").gsub("\r\n", "\n"))
       end
 
     end
@@ -97,14 +101,18 @@ describe "Using tacos" do
       Tacos.new.should be_a(Tacos::LibXML2Wrapper)
     end
 
-    describe "parsing XML from file" do
+    describe "creating XML doc from different sources" do
 
-      it "should return an XML document in to_s" do
+      it "should return an XML document in to_s given a valid XML file (LibXML2)" do
         filename = "./spec/mock_xml/books.xml"
-        doc = Tacos.new(filename)
-        doc.to_s.should eql(File.read(filename).gsub("\r\n", "\n") + "\n")
+        Tacos.new(filename).to_s.should eql(File.read(filename).gsub("\r\n", "\n") + "\n")
       end
       
+      it "should return an XML document in to_s given a valid XML string (LibXML2)" do
+        xml_string = File.read "./spec/mock_xml/books.xml"
+        Tacos.new(xml_string).to_s.should eql(xml_string.gsub("\r\n", "\n") + "\n")
+      end
+
     end
 
     describe "using XPath queries" do

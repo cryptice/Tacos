@@ -2,12 +2,24 @@ module Tacos
   class TacoAbstractWrapper
     def self.new(xml_source=nil, options={})
       instance = super()
-      instance.create_doc_from_file(xml_source) if xml_source
+
+      if xml_source
+
+        if xml_source.strip[0..0] == "<"
+          instance.create_doc_from_string(xml_source)
+        else
+          instance.create_doc_from_file(xml_source)
+        end
+      end
       return instance
     end
 
     def all(query)
       node_collection(query)
+    end
+
+    def create_doc_from_file(file)
+      create_doc_from_string(xml_from_file(file))
     end
 
     def first(query)

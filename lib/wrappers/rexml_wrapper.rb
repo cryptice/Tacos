@@ -9,8 +9,8 @@ module Tacos
       REXML::XPath.match(@doc, query)
     end
 
-    def create_doc_from_file(file)
-      @doc = REXML::Document.new(xml_from_file(file))
+    def create_doc_from_string(string)
+      @doc = REXML::Document.new(string)
     end
 
     def first_node(query)
