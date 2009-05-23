@@ -69,8 +69,8 @@ describe "Using tacos" do
         end
       end
 
-      it "should return the number of nodes when calling LibXML2NodeCollection#size" do
-        #@doc.all("//book").size.should eql(2)
+      it "should return the number of nodes when calling REXMLNodeCollection#size" do
+        @doc.all("//book").size.should eql(2)
       end
 
       it "should return a REXMLNodeCollection containing a nodes children" do
@@ -158,7 +158,7 @@ describe "Using tacos" do
       end
 
       it "should return the number of nodes when calling LibXML2NodeCollection#size" do
-        #@doc.all("//book").size.should eql(2)
+        @doc.all("//book").size.should eql(2)
       end
 
       it "should return a LibXML2NodeCollection containing a nodes children" do

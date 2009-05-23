@@ -24,5 +24,8 @@ module Tacos
       @nodes ||= taco.all_nodes(xpath_query)
     end
 
+    def size
+      nodes.size
+    end
   end
 end
