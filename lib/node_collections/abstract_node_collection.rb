@@ -11,6 +11,15 @@ module Tacos
       instance
     end
 
+    def each(&block)
+      nodes.each do |node|
+        yield TNode.new(
+          :source_node => node,
+          :taco => @taco
+        )
+      end
+    end
+
     def nodes
       @nodes ||= taco.all_nodes(xpath_query)
     end
