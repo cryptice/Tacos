@@ -45,6 +45,10 @@ describe "Using tacos" do
         @doc.first("non_existing").should be_nil
       end
 
+      it "should return library nodes when calling #nodes" do
+        @doc.all("//book").nodes.should be_a(Array)
+      end
+
       it "should return a REXMLNodeCollection for lazy evaluation" do
         node_collection = @doc.all("//book")
         node_collection.should be_a(Tacos::AbstractNodeCollection)

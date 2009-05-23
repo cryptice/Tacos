@@ -4,11 +4,10 @@ module Tacos
 
     def each(&block)
       nodes.each do |node|
-        tnode = TNode.new
-        tnode.name = node.name
-        tnode.source_node = node
-        tnode.taco = @taco
-        yield tnode
+        yield TNode.new(
+          :source_node => node,
+          :taco => @taco
+        )
       end
     end
 
