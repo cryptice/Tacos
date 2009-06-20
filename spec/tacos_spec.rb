@@ -113,6 +113,8 @@ describe "Using tacos" do
         Tacos.new(xml_string).to_s.should eql(xml_string.gsub("\r\n", "\n") + "\n")
       end
 
+      it "should return an XML document in to_s given a valid XML IO object (LibXML2)"
+
     end
 
     describe "using XPath queries" do
