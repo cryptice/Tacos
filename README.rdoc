@@ -12,11 +12,11 @@ Ruby gem providing a uniform API for various XML libraries.
 
 Currently tacos wraps the following libraries:
 
-REXML
+* REXML
 
-LibXML2
+* LibXML2
 
-Hpricot
+* Hpricot
 
 == Roadmap
 
