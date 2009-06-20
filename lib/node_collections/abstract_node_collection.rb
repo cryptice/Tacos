@@ -11,7 +11,7 @@ module Tacos
       instance
     end
 
-    def each(&block)
+    def each
       nodes.each do |node|
         yield TNode.new(
           :source_node => node,

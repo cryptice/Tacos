@@ -154,7 +154,7 @@ describe "Using tacos" do
       end
 
       it "should return library nodes when calling #nodes using :all (LibXML2)" do
-        @doc.find(:all, "//book").nodes.should be_a(Array)
+        @doc.find(:all, "//book").nodes.should be_a(LibXML::XML::XPath::Object)
       end
 
       it "should return a LibXML2NodeCollection for lazy evaluation" do
