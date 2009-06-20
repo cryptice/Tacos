@@ -53,7 +53,7 @@ describe "Using tacos" do
         @doc.all("//book").nodes.should be_a(Array)
       end
 
-      it "should return library nodes when calling #nodes using :all" do
+      it "should return library nodes when calling #nodes using :all (REXML)" do
         @doc.find(:all, "//book").nodes.should be_a(Array)
       end
 
@@ -153,6 +153,10 @@ describe "Using tacos" do
         @doc.all("//book").nodes.should be_a(LibXML::XML::XPath::Object)
       end
 
+      it "should return library nodes when calling #nodes using :all (LibXML2)" do
+        @doc.find(:all, "//book").nodes.should be_a(Array)
+      end
+
       it "should return a LibXML2NodeCollection for lazy evaluation" do
         node_collection = @doc.all("//book")
         node_collection.should be_a(Tacos::AbstractNodeCollection)
@@ -240,6 +244,10 @@ describe "Using tacos" do
 
       it "should return library nodes when calling #nodes (Hpricot)" do
         @doc.all("//book").nodes.should be_a(Hpricot::Elements)
+      end
+
+      it "should return library nodes when calling #nodes using :all (Hpricot)" do
+        @doc.find(:all, "//book").nodes.should be_a(Array)
       end
 
       it "should return a HpricotNodeCollection for lazy evaluation" do
