@@ -18,6 +18,15 @@ LibXML2
 
 Hpricot
 
+== Roadmap
+
+* Wrapper for Java based XML library to be used from JRuby
+
+* Create XML documents from scratch
+
+* Integration with DSS4R
+
+
 == Copyright and license
 
 Copyright (c) 2009 Erik Lindblad
