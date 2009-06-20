@@ -10,8 +10,6 @@ Ruby gem providing a uniform API for various XML libraries.
 
 == Supported libraries
 
-Currently tacos wraps the following libraries:
-
 * REXML
 
 * LibXML2
