@@ -53,6 +53,16 @@ describe "Using tacos" do
         @doc.all("//book").nodes.should be_a(Array)
       end
 
+      it "should return library nodes when calling #nodes using :all" do
+        @doc.find(:all, "//book").nodes.should be_a(Array)
+      end
+
+      it "should raise error when calling find with invalid quantifier" do
+        lambda {@doc.find(:invalid)}.should raise_error(RuntimeError) { |error|
+          error.message.should eql("Provided quantifier 'invalid' is not valid.")
+        }
+      end
+
       it "should return a REXMLNodeCollection for lazy evaluation" do
         node_collection = @doc.all("//book")
         node_collection.should be_a(Tacos::AbstractNodeCollection)
@@ -113,7 +123,7 @@ describe "Using tacos" do
         Tacos.new(xml_string).to_s.should eql(xml_string.gsub("\r\n", "\n") + "\n")
       end
 
-      it "should return an XML document in to_s given a valid XML IO object (LibXML2)"
+      #it "should return an XML document in to_s given a valid XML IO object (LibXML2)"
 
     end
 

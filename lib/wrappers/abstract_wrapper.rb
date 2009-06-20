@@ -33,6 +33,14 @@ module Tacos
         first(selector)
       elsif selector.is_a?(Symbol)
         case selector
+        when :all
+          if options.is_a?(String)
+            all(options)
+          elsif options.is_a?(Hash)
+            raise "Find conditions not implemented yet"
+          else
+            raise "Invalid find parameters."
+          end
         when :first
           if options.is_a?(String)
             first(options)
@@ -41,6 +49,8 @@ module Tacos
           else
             raise "Invalid find parameters."
           end
+        else
+          raise "Provided quantifier '#{selector.to_s}' is not valid."
         end
       end
     end
