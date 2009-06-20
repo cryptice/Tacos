@@ -22,6 +22,8 @@ Ruby gem providing a uniform API for various XML libraries.
 
 * Create XML documents from scratch
 
+* Rubyesque syntax for find
+
 * Integration with DSS4R
 
 
